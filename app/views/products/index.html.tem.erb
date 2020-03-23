@@ -1,0 +1,51 @@
+<h4>Your Cart: </h4>
+
+<ol>
+    <%# if session[:cart] %>
+        <% cart.each do |cart_items| %>
+            <li> <%= cart_items %> </li>
+        <% end %>
+    <%# end%>
+</ol>
+
+<ul>
+<%#byebug%>
+<% @products = Product.all%>
+<% @products.each do |product| %>   
+    <li>
+        <%= link_to  product.name, product %>
+        $<%= product.price %>
+        <%= button_to 'add to cart', add_to_cart_path, method: :patch, params: { id: product.id, name: product.name}%>
+         
+    </li>
+<% end %>
+</ul>
+
+
+<%#form_tag(:controller => "people", :action => "search", :method => "get", :class => "nifty_form")%>
+
+
+<%= form_tag ({controller: 'products',
+    action: 'add',
+    method: 'post'}) do %>
+
+  <input name=product>
+  <input type=submit value='add to cart'>
+<% end %>
+
+<%#= form_tag products_path do %>
+  <%# <label>product name:</label><br> %>
+  <%#= text_field_tag :'product[name]' %>
+  <%# <br>  %>
+  <%#= submit_tag "Submit Product" %>
+<%# end %>
+
+<%# form_for @product, :url => {:action => "add_to_cart", :id => @product} do |f| %>
+    <%#= f.text_field :name %>
+    <%#= f.submit 'Add to Cart' %>
+<%# end %>
+
+
+<%#= f.label :id_name, "text" %>
+<%#= f.text_field :id_name %>
+<%#= f.password_field :id_name %>
