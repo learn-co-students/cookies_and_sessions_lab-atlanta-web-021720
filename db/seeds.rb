@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Product.destroy_all
+10.times do
+Product.create(name: Faker::Games::Pokemon.name, price: rand(10...20));
+end
+
+# byebug
